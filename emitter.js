@@ -103,7 +103,7 @@ function parseEvent(event) {
     let eventParts = [];
 
     for (let i = 0; i < pieces.length; i++) {
-        eventParts.push(pieces.slice(0, pieces.length - i).join('.'));
+        eventParts.unshift(pieces.slice(0, pieces.length - i).join('.'));
     }
 
     return eventParts;
