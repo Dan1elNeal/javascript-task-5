@@ -40,7 +40,7 @@ function getEmitter() {
          */
         off: function (event, context) {
             let suitableEvents = Object.keys(events).filter(eventKey =>
-                eventKey.includes(event + '.') || eventKey === event);
+                eventKey.startsWith(event + '.') || eventKey === event);
 
             const callback = contextAndHandler => contextAndHandler.context === context;
             suitableEvents.forEach(suitableEvent => {
@@ -103,7 +103,7 @@ function parseEvent(event) {
     let eventParts = [];
 
     for (let i = 0; i < pieces.length; i++) {
-        eventParts.unshift(pieces.slice(0, pieces.length - i).join('.'));
+        eventParts.push(pieces.slice(0, pieces.length - i).join('.'));
     }
 
     return eventParts;
