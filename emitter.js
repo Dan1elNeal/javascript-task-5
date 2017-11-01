@@ -40,8 +40,7 @@ function getEmitter() {
          */
         off: function (event, context) {
             let suitableEvents = Object.keys(events).filter(eventKey =>
-                eventKey.includes(event + '.'));
-            suitableEvents.push(event);
+                eventKey.includes(event + '.') || eventKey === event);
 
             const callback = contextAndHandler => contextAndHandler.context === context;
             suitableEvents.forEach(suitableEvent => {
